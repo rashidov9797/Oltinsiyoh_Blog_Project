@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if category_post %}
+
+  <h1 class="text-dark text-center mt-5">{{cats}}</h1>
+
+  <ul>
+    
+  {% for post in category_post %}
+
+      <li class='mb-5'><a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
+        {{post.categories}}
+        {{post.author.first_name}}
+        {{post.author.last_name}}  
+        {{post.post_date}} -   
+  <br>
+
+        {{ post.body | slice:":200" | safe}}
+      </li>
+
+  {% endfor %}
+  </ul>
+
+{% else %}
+
+    <h2 class="text-center text-danger my-5">Kechirasiz ushbu bo'limda hali maqola joylanmagan</h2>
+
+
+{% endif %}
+
+{% endblock content %}
+

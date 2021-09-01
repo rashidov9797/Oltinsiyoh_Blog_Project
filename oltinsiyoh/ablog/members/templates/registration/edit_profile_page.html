@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+
+{% block title %}  Shaxsiy ma'lumotlarni yangilash {% endblock %}
+
+
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+    {% if user.id == profile.user.id %}
+
+
+
+        <h1>Shaxsiy ma'lumotlarni yangilash</h1>
+
+        <div class="form-group">
+          <form  method="POST" enctype="multipart/form-data">
+
+            {% csrf_token%}
+
+            {{form.as_p}}
+
+            <button class="btn btn-danger float-right">
+              Yangilash
+            </button>
+          </form>
+        </div>      
+
+
+
+      {% else %}
+
+        <h6 class="text-danger">
+          Siz login qilmagansiz
+        </h6>
+
+      {% endif %}
+      
+{% else %}
+
+  <h6 class="text-danger">
+    Siz login qilmagansiz
+  </h6>
+{% endif %}
+      
+ 
+
+
+
+
+{% endblock content %}

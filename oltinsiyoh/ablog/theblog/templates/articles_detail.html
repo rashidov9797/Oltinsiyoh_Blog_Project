@@ -1,0 +1,114 @@
+
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block title %} {{post.title}} {% endblock %}
+
+
+
+{% block content %}
+
+
+<h1 class="text-center mt-5">
+  {{post.title}} 
+</h1>
+
+<samall>
+  {{post.author.first_name}}
+  {{post.author.last_name}}
+
+  {{post.post_date}}
+
+<hr>
+</small>
+
+
+
+<!-- FIXED -->
+
+
+
+
+
+
+
+<!-- POST BODY -->
+<br>
+<div class="container">
+
+<div class="row">
+  <div class="col-md-7 offset-2 ">
+    <div class="row">
+      <div class="col-md-8">
+        
+      </div>
+    </div>
+    {% if post.header_image %}
+    <div class=" col-md-12  rounded ">
+
+      <img class="img-fluid" src = "{{post.header_image.url}}">
+
+    </div>
+    {% endif %}
+    
+    <p class="text-dark bg-light">
+
+      {{post.body | safe}}
+
+      <!--  SAFE  bu  ----  BIZ ADMINLIGIMIZ UCHUN BODYGA POST JOYLAYOTGANDA HTML TAGLARIDAN HAM QOSHSAK QABUL QILADI LEKIN ASOSIY SAYTDA KO"RINMAYDI -->
+    </p>
+  
+  </div>
+</div>
+</div>
+
+
+
+<br> <br>
+
+
+
+
+<div class="my-5 mx-3 d-flex justify-content-between">
+
+<!-- BACK BTN -->
+<div>
+  <a class="btn btn-success  "href="{% url 'home' %}">Orqaga</a>
+</div>
+
+
+<span> 
+
+
+  {% if post.author == request.user %}
+
+      <a class="text-success" href="{% url 'update_post' post.pk %}"><i class="fas fa-user-edit "></i>Tahrirlash</a>
+
+      <a class="text-success" href="{% url 'delete_post' post.pk %}"> <i class="fas fa-trash-alt ml-5"></i> O'chirish</a>
+
+  {%else%}    
+
+
+    
+ 
+  
+  {% endif %}
+
+</span> 
+
+
+
+
+
+</div>
+
+
+
+
+
+
+{% endblock content %}
+

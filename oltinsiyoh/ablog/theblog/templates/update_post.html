@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+<title>{% block title %} Maqolani tahrirlash{% endblock %}</title>
+
+
+
+{% block content %}
+
+
+
+{% if user.is_authenticated %}
+
+  <div class="container-fluid ">
+   
+    <div class="row ">
+      <h1 class=" text-center" style="color:coral">Maqolani tahrirlash</h1>
+  
+      <div class="col-md-12  py-5 " style="background-color:#173e43;color:coral">
+
+          <form  method="POST">
+
+            {% csrf_token %}
+            {{form.media}}
+            {{form.as_p}}
+            
+            <button class="btn btn-danger float-right">
+              Yangilash
+            </button>
+          </form>
+
+  
+      </div>
+    </div>
+  </div>
+
+{% else %}
+<div class="row mt-5 ">
+  <div class="col-md-6 offset-1 bg-light py-5 rounded ">
+    <h3 class="text-danger text-center  py-5">
+      Siz login qilmagansiz, iltimos avval saytga kiring
+    </h3> <br>
+
+    <button class="btn btn-dark  offset-5 px-4">
+      <a class="text-light" href="{% url 'login'%}">Login</a>
+    </button>
+
+  </div>
+
+</div>
+
+
+{% endif %}
+
+
+{% endblock content %}
+

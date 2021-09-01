@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Yangi bo'lim qo'shish joylash{% endblock %}
+
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <h1 class='text-center mt-5'>Bo'lim qo'shish</h1>
+
+    <div class="form-group offset-4">
+      <form  method="POST">
+
+    {% csrf_token%}
+  
+    {{form.as_p}}
+    
+  
+  
+    
+    <button class="btn btn-danger float-right">
+      Yuklash
+    </button>
+      </form>
+    </div>
+
+{% else%}
+    <h6 class="text-danger">
+      Siz login qilmagansiz
+    </h6>
+
+{% endif %}    
+
+
+
+{% endblock content %}
+

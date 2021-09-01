@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+
+
+<!-- POSTLAR MENYUSI -->
+
+
+
+<h1 class="text-center text-light mt-5">Yangiliklar</h1>
+{% block content %}
+
+
+<h1 class="text-center text-light mt-5">Yangiliklar</h1>
+
+<div class="container mt-5">
+
+  
+  <div class="row">
+    <div class="col-md-10 offset-1">
+
+        {% for post in object_list %}
+      <div class="card mb-4">
+
+        <div class="card-title">
+
+        <!-- POST TITLE -->
+          <h5 class="text-dark text-center mt-5">
+
+          <a href="{% url 'article-detail' post.pk %}">
+
+            <h4 class="text-info">{{ post.title }}</h4>
+          </a>
+
+          </h5>
+
+          
+          <span class="d-flex justify-content-around">
+
+            
+            <a>
+              {{post.post_date}} 
+            </a> 
+
+            <a href="{% url 'category' post.category %}">
+              {{post.category}}
+            </a>
+
+
+          </span>
+        </div>
+
+        <!-- POST -->
+
+        <div class="row">
+          <div class="col-md-6">
+            
+
+          {% if post.header_image %}
+
+
+            <img class="img-fluid mb-2 rounded" src = "{{post.header_image.url}}">
+
+
+          {% endif %}
+
+
+
+          </div>
+
+          <div class="col-md-6">
+
+            
+          <div class="card-footer mb-4 ">
+
+          <p class="text-justify text-dark mx-2">
+            {{ post.snippet }}
+
+            <a class="btn btn-info float-right mt-4" href="{% url 'article-detail' post.pk %}">Batafsil</a>
+   
+          </p>
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+        {% endfor %}
+  </div>
+  </div>
+</div>
+
+
+
+
+{% endblock content %}
+
+

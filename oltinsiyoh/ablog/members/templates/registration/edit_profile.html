@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+<title>{% block title %} Profilni yangilash{% endblock %}</title>
+
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12  mt-5" style="background-color:#173e43; color:aliceblue;">
+
+    
+    <h1 class=" text-center mt-5" style="color:coral">Profilni yangilash</h1>
+
+
+
+    <!-- BIO -->
+
+    <h4 class="text-danger">
+      BIO: <br>
+      {{ user.profile.bio }}
+    </h4>
+
+
+    <div class="form-group">
+          <form  method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-danger ">
+              Yangilash
+            </button>
+          </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+        
+  
+
+
+{% endblock content %}

@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Sahifani yangilash{% endblock %}
+
+
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+    <h1 class='text-center mt-5'>Sahifani yangilash</h1>
+
+    <div class="form-group offset-4">
+      <form  method="POST">
+
+    {% csrf_token%}
+  
+    {{form.as_p}}
+    
+  
+  
+    
+    <button class="btn btn-danger float-right">
+      Sahifani ayngilash
+    </button>
+      </form>
+    </div>
+
+{% else%}
+    <h6 class="text-danger">
+      Siz login qilmagansiz
+    </h6>
+
+{% endif %}    
+
+
+
+{% endblock content %}
+

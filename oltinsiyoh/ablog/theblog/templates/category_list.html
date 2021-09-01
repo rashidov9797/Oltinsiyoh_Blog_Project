@@ -1,0 +1,23 @@
+
+
+{% extends 'base.html' %}
+
+
+{% block title %} Maqolalar bo'limi {% endblock %}
+
+{% block content %}
+
+
+  <h1 class="text-center text-info">Maqolalar bo'limi </h1>
+
+
+           
+
+  {% for item in cat_menu_list %} 
+
+   <h4><a class="dropdown-item" href="{% url 'category' item %}"> {{item}}</a></h4>
+
+  {%endfor%}
+
+
+{% endblock content %}

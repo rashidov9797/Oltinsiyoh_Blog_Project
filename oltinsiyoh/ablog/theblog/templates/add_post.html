@@ -1,0 +1,48 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Yangi maqola joylash{% endblock %}
+
+
+
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+    <h1>Maqola joylash</h1>
+
+    <div class="form-group">
+      <form  method="POST" enctype="multipart/form-data"  >
+
+      {% csrf_token%}
+      {{form.media}}
+      {{form.as_p}}
+
+    <button class="btn btn-danger float-right">
+      Yuklash
+    </button>
+      </form>
+    </div>
+
+    <script>
+      var name = "{{user.id}}"
+      document.getElementById("azik").value = name;
+    </script>
+
+
+{% else%}
+    <h6 class="text-danger">
+      Siz login qilmagansiz
+    </h6>
+
+{% endif %}    
+
+
+
+{% endblock content %}
+
+
+
+

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+<title>{% block title %} Ro'yxatdan o'tish{% endblock %}</title>
+
+
+{% block content %}
+
+
+
+
+
+        <h1 class=" text-center" style="color:coral">Ro'yxatdan o'tish</h1>
+        <div class="form-group">
+          <form  method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-danger ">
+              Yuklash
+            </button>
+          </form>
+        </div>
+  
+
+
+{% endblock content %}

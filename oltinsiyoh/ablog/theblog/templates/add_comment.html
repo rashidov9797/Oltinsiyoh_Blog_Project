@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Fikr bildirish{% endblock %}
+
+
+
+
+{% block content %}
+
+
+
+    <h1>Fikr bildirish</h1>
+
+    <div class="form-group">
+      <form  method="POST">
+
+          {% csrf_token%}
+          {{form.as_p}}
+
+        <button class="btn btn-danger float-right">
+          Yuklash
+        </button>
+      </form>
+    </div>
+
+
+
+{% endblock content %}
+
+
+
